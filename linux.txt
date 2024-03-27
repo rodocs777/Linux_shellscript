@@ -1,0 +1,533 @@
+man echo 
+manual do echo
+
+mkdir -p dir1/dir3
+cria árvore de pastas
+
+rm (name) -rf foo
+apagar dir
+
+rm -f força pra remover e se nao tiver arquivo, força do mesmo jeito e nao da erro
+
+echo -e para editar linhas
+
+sleep 10
+sleep 3
+
+
+cd ../../ volta 
+
+control R pesquisa histórico de comandos
+
+ls -ltr ordena do mais velho ao mais novo
+
+touch deixa ultima hora que mexeu no arquivo
+
+ls -1
+ordena por linhas
+
+ps ordena processos no micro
+ps aux vê todos processos
+ps aux | ag bash >> on caso bash, ou bin, o que quiser procurar de processos
+
+bash
+para criar novo processo
+
+echo -n
+cria quebra de linhas
+
+env 
+print env
+ver váriaveis do sistema
+
+echo -e posso por ordenadas
+echo -e dir1/ndir2/touch
+/t > tab
+/n linha nova
+man echo pode ver tudo
+para produzir saídas
+
+awk lista apenas o que quero ver
+ps aux | ag bash | awk '{ print $5 }'
+
+
+scritp:
+./(name)
+executa scritp
+
+
+cat
+lê arquivo
+tac 
+Le de baixo pra cima
+
+cat -b 
+numera todas que nao estejam em branco
+
+cat -n
+numero ate as em branco
+
+cat -A
+mostra final em branco com $ ou      $
+^I  é tab 
+     $ espaço
+
+
+grep procura dentro do arquivo
+
+
+tail ultimos 10
+tail -n10
+tail -n200 linha
+ultimas
+
+head
+primeiras linhas
+-n
+-c primeiro caracteres
+
+wc "nomedoarquivo"
+numero de linhas
+palavras
+caracteres
+	wc -l (apenas linhas) , não lê espaco
+	wc -c (apenas bytes) igual a -m
+	wc -w (palavras)
+	wc -m (caracteres)
+
+
+tail -n5| wc -w
+sai de um comando e entrada do outro
+
+
+
+sort
+ordena por ordem alph
+sort alunos* 
+
+sort alunos* | cat -A ( depois do pipe |, ele monstra como saida tudo o que o sort, ou apenas o que o sort trouxe e coloca
+como entrada do comando
+
+sort -k2 
+ordena pelo segundo campo
+
+ordena como string
+se poe -g considera tudo como numero e ordena por numero
+
+tail /etc/passwd | sort -k3 -t":" -g
+-k3 terceira coluna
+-t":" dita onde separa as colunas : no caso
+-g para dizer que considera tudo como numero
+
+uniq
+sort alunos | uniq
+uniq mostra um de cada sem repetir
+uniq -u mostra apenas os que nao repetirar
+uniq -d mostra apenas os que repetiram
+uniq -c ele conta as repetições
+
+sort alunos | uniq -c | sort
+ordena dos que menos repetiu ao que mais
+
+sort alunos | uniq -c | sort -r
+do que mais repetiu
+
+sort alunos | uniq -c | sort -r | head -n1
+a primeira linha desse comando
+
+
+whatis
+vê o que o comando faz
+whatis tr for exemple
+
+ts --help
+vê as formas tb
+
+cat alunos | tr a e
+troca letras minusculas a por e
+
+echo Shellcript | tr -s 'l'
+comprime ll para um l só
+
+
+cut
+comando que corta de 1 caracter a outro
+cat arquivo | cut -c1-5
+cat arquivo | cut -c1,2,3
+cat arquivo | cut -c5- (a partir do 5)
+cat arquivo | cut -c1,2,10- (1, 2 e a partir do 10)
+
+cut com campo
+define campos e mostra apenas o campo
+cat arquivo | cut -f1 (nao ta definido campo)
+cat arquivo | cut -d" " (espaço ta definido separação)
+cat arquivo | cut -d" " -f1
+cat arquivo | cut -d" " -f1,3 (campo 1 e campo 3 aparecerão)
+cat arquivo | cut -d" " -f1-3 (aparecerao do 1 ao 3)
+cat arquivo | cut -d" " -f2- (aparecerao a partir do 2)
+cat arquivo | cut -d" " -f-2 (aparecera tudo até o 2)
+
+mais exemplos
+
+tail (para aperecer as ultimas 10 linhas)
+
+tail /etc/passwd | cut -d":" -f1,5 (aparecerao o campo 1 e o 5)
+
+
+
+diff 
+vê a diferenca entre arquivos ou pastas
+
+diff alunos.txt alunos2.txt
+3c3
+< Ricardo
+---
+> Ricardo sobrenome 
+(<arquivo da esquerda, > arquivo da direita)
+(na linha 3 tem a diferenca disso)
+
+
+diff alunos.txt alunos2.txt | cat -A (para ver a diferenca de espaço com $)
+9d8
+< Maria
+(quer dizer que tem no arquivo da esquerda essa linha a mais escrito Maria)
+
+
+diff -w alunos.txt alunos2.txt (-2 ignora espaços em brancos)
+
+
+comparar pastas
+diff -r arquivos arquivos-copia (sao dirs)
+resultado:
+diff -r arquivos/alunos.txt arquivos-copia/alunos.txt
+0a1
+> Antonio
+(no arquivo da direita tem uma linha a mais)
+
+
+resultado:
+Only in arquivos: diretorio1
+Only in arquivos-copia: teste
+(o diretprio1 só existe no dir arquivos)
+(o teste só exite no dir arquivos-copia)
+
+
+grep procurar conteudo dentro de uma string de texto, arquivo de texto, saída de texto
+
+grep Claudia arquivos*
+
+grep Claudia* arquivos*
+
+grep Claudia arquivos*
+
+grep -i ClAudia arquivos* (-i vê todas as possibilidades de maiuscula ou minuscula, mas deixa o script mis pesado)
+
+grep -c Claudia arquivos* (conta quata vezes achou)
+em cada arquivo vai aparecera
+
+grep -v Claudia arquivos* (mostra linhas que nao tem Claudia
+
+grep -r Claudia (vai procurar dentro do dir e subdirs)
+
+grep -A3 Paulo arquivos*
+3 linhas depois de paulo
+
+grep -B3 Paulo arquivos*
+3 linhas antes de Paulo
+
+grep -r Ana * (-menos r diz =  procurar Ana em todos os arquivos do dir e subdir)
+
+grep -rl Ana * ( retorna apenas onde estão os arquivos)
+
+grep /fgrep /egrep (fgrep mais leve)
+simples / nao usa expressoes/ usa expressoes extendidas
+
+
+
+sed 
+
+apaga ou substitui
+
+sed paulo
+sed s/paulo/pedro
+
+
+
+ps axu
+vê as instânicias rodando
+
+
+comandos sequenciais
+|| executa um e outro, caso um esteja certo
+&& se o primeiro estiver certo ou errado, executa os dois
+
+
+
+caso de certo num arquivo, caso dê errado noutro
+ls -l alunos.txt3 > log.out 2> log-erro.out
+o 2> é quem definine erro
+
+
+
+direciona erro em arquivo:
+ls -l alunos.txt3 >> log.out 2>&1
+se quero no caso direcionar o erro para o 1
+
+
+
+VARIÁVEIS
+
+[a4882yd@brsmcbcuvlhjb01 teste]$ date +%H
+15
+[a4882yd@brsmcbcuvlhjb01 teste]$ HORA='date +%H'
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo $HORA
+date +%H
+[a4882yd@brsmcbcuvlhjb01 teste]$ HORA=`date +%H`
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo $HORA
+15
+[a4882yd@brsmcbcuvlhjb01 teste]$ MINUTO=$(date +%M)
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo $MINUTO
+28
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo $MINUTO
+
+
+
+
+CRIAR VARIÁVEIS
+
+
+[a4882yd@brsmcbcuvlhjb01 teste]$ CURSO="Curso de sell"
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo CURSO
+CURSO
+[a4882yd@brsmcbcuvlhjb01 teste]$ echo $CURSO
+Curso de sell
+[a4882yd@brsmcbcuvlhjb01 teste]$
+
+
+
+pid atual
+ ps axu | grep bash
+ver pid
+
+
+
+File Gloobing
+ver apenas um caracter depois de aula
+ls -la Aula?
+
+Exmplos
+Exemplos]$ ls -la *[12345]
+
+
+
+comando>
+man ls
+vi os códigos do ls
+
+
+
+se der exit no final da shell com o código de erro
+exit 0
+ele retorna com o código que vc colocou
+se nao colocar nada, como exit apenas, ele dá o código que o man informa
+
+
+
+para ver erro usar comando:
+$?
+
+
+------------------------
+Script:
+
+
+#/bin/bash
+
+ls /tmp/
+ls /tmp/outroarquivo
+
+RETURN_CODE=$?
+
+
+
+echo "O codigo de retorno do ls foi $RETURN_CODE"
+
+--------------------------------
+
+#!/bin/bash
+
+
+DATAHORA=$(date +%H:%M)
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+echo "==================== Meu primeiro SCript ++++++++++++++"
+
+echo ""
+
+
+echo -n "Exibir da e hora atual: $DATAHORA"
+echo ""
+
+echo -n "listagem dos alunos"
+sort $ARQALUNOS
+
+
+-----------------------------
+
+
+
+read VAR1 VAR2 VAR3
+cuso shell script
+echo $VAR1
+curso
+echo $VAR2
+shell
+echo $VAR3
+script
+
+
+se eu apago VAR3 no read
+read $VAR1 $VAR2
+fica com VAR1 o curso
+VAR2 shell script
+echo $VAR1 $VAR2
+curso shell script
+
+
+outra forma:
+
+
+[a4882yd@brsmcbcuvlhjb01 ~]$ read -p "Informa : " CURSO
+Informa : SHELL
+[a4882yd@brsmcbcuvlhjb01 ~]$ echo $CURSO
+SHELL
+
+
+
+[a4882yd@brsmcbcuvlhjb01 ~]$ read -s CODIGO
+[a4882yd@brsmcbcuvlhjb01 ~]$ echo $CODIGO
+1234
+[a4882yd@brsmcbcuvlhjb01 ~]$
+
+
+
+read --help (para mais informacoes)
+
+
+
+=========================================================
+
+
+
+
+#!/bin/bash
+
+ou 
+
+
+#!/bin/ksh
+#######################################################################################################
+# Descricao : Gera o arquivo PROCESSA.CUX com os comandoMalhas para realizar a limpeza dos controles das malhas.
+#             Deve ser informado o nome da malha como parametro.
+#                
+# Exemplo   : limpeza_controles.sh MSI2000.sh ou limpeza_controles.sh MSI2000
+# Data      : 16/10/2020
+# Autor     : Max Almeida
+# Alteracao : 28/06/2021
+# Autor     : Max Almeida
+#######################################################################################################
+
+
+
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+
+echo "===================Script de Busca de Alunos ==============="
+
+echo""
+
+echo -n "Por favor, informe o nome do aluno: "
+
+read ALUNO
+
+
+
+echo ""
+
+echo "O nome completo do aluno é: $(grep "$ALUNO" $ARQALUNOS) "
+
+echo ""
+
+echo "Fim do Script"
+
+
+
+
+==========================================================
+
+
+outra forma:
+
+
+#!/bin/bash
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+
+echo "===================Script de Busca de Alunos ==============="
+
+echo""
+
+read -p "Por favor, informe o nome do aluno: " ALUNO
+
+
+
+
+
+
+
+echo ""
+
+echo "O nome completo do aluno é: $(grep "$ALUNO" $ARQALUNOS) "
+
+echo ""
+
+echo "Fim do Script"
+
+
+======================================================
+
+
+
+#!/bin/bash
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+
+echo "===================Script de Busca de Alunos ==============="
+
+echo""
+
+#echo -n "Por favor, informe o nome do aluno: "
+#read ALUNO
+
+
+read -p "Por favor, informe o nome do aluno: " ALUNO
+
+
+ALUNOCOMPLETO=$(grep "$ALUNO" $ARQALUNOS)
+
+
+
+
+echo ""
+
+echo "O nome completo do aluno é: $ALUNOCOMPLETO "
+
+echo ""
+
+echo "Fim do Script"
+
+
