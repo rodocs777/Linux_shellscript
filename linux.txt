@@ -531,3 +531,39 @@ echo ""
 echo "Fim do Script"
 
 
+======================================
+
+
+#!/bin/bash
+
+
+# $o - Nome do programa
+# $# - quantidade de Parametros inseridos
+#S* - Todoso os parametros inseridos
+# $1-9 - Cada um dos parâmetros
+
+
+echo "O script $0 recebeu $# parametros"
+
+echo "Os parametros redcebidos foram: $*"
+
+
+echo ""
+
+echo "O parametro \$1 = $1"
+echo "O parametro \$2 = $2"
+echo "O parametro \$3 = $3"
+echo "O parametro \$4 = $4"
+
+
+\$1 >>> protege o parametro se nao fica assim:
+
+
+
+O parametro  um = um
+O parametro  dois = dois
+O parametro  tres = tres
+O parametro  quatro = quatro
+
+
+=================
