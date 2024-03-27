@@ -566,4 +566,124 @@ O parametro  tres = tres
 O parametro  quatro = quatro
 
 
-=================
+=========================================
+
+
+#!/bin/bash
+########################################################################################################
+#criacao : Script de exemplo para uso de parametros                                                    #
+#             A partir de uma entreda do usuários, será feita uma busca no arquivo aluno2.txt          #
+#                                                                                                      #
+# Exemplo   : ./parametrosbuscaalunos.sh                                                               #
+# Data      : 27/03/2024                                                                               #
+# Autor     : Rodolfo Ferraz                                                                           #
+# Alteracao : 28/06/2021                                                                               #
+########################################################################################################
+
+
+
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+echo "===================Script de Busca de Alunos ==============="
+echo ""
+
+ALUNOCOMPLETO=$(grep "$1" $ARQALUNOS)
+
+
+
+
+echo ""
+
+echo "O nome completo do aluno é: $ALUNOCOMPLETO "
+
+echo ""
+
+echo "Fim do Script"
+
+
+==========================================================================
+
+
+vi somateste.sh
+#!/bin/bash
+
+
+echo "digita um valor"
+read VAR1
+
+echo ""
+
+echo "digita outro"
+read VAR2
+
+echo ""
+
+soma=$((VAR1 + VAR2))
+
+
+echo "A soma de $VAR1 e $VAR2 é igual a $soma"
+
+
+=====================================================================
+
+
+
+[a4882yd@brsmcbcuvlhjb01 Scripts]$ vi informacoesdemaquina.sh
+#!/bin/bash
+
+
+echo ""
+
+# Informaçõo is da Máquina
+echo "Nome da Máquina: $(hostname)"
+echo "Data e Hora Atual: $(date)"
+echo "Máquina Ativa desde: $(uptime -s)"
+echo "Versão do Kernel: $(uname -r)"
+echo "Quantidade de CPUs/Cores: $(nproc)"
+echo "Modelo da CPU: $(cat /proc/cpuinfo | grep 'model name' | uniq | cut -d':' -f2)"
+echo "Total de Memória RAM Disponível: $(free -h | grep 'Mem' | awk '{print $2}')"
+
+echo ""
+
+# Partições
+echo "Partições:"
+echo ""
+df -h
+
+
+
+===========================================================
+
+
+
+
+#!/bin/bash
+
+
+echo ""
+
+# Informaçõo is da Máquina
+echo "Nome da Máquina: $(hostname)"
+echo "Data e Hora Atual: $(date)"
+echo "Máquina Ativa desde: $(uptime)"
+echo "Versão do Kernel: $(uname)"
+echo "Quantidade de CPUs/Cores: $(nproc)"
+echo "Modelo da CPU: $(cat /proc/cpuinfo | grep 'model name' | uniq | cut -d':' -f2)"
+echo "Total de Memória RAM Disponível: $(free -h | grep 'Mem' | awk '{print $2}')"
+
+echo ""
+
+# Partições
+echo "Partições:"
+echo ""
+df -h
+
+
+
+============================================
+
+
+
+
+echo "Total de Memória RAM Disponível: $(free -h | grep 'Mem')"
