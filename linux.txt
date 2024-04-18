@@ -687,3 +687,294 @@ df -h
 
 
 echo "Total de Memória RAM Disponível: $(free -h | grep 'Mem')"
+
+
+
+=================================================
+
+
+
+#!/bin/bash
+########################################################################################################
+#criacao : Script de exemplo para uso de parametros                                                    #
+#             A partir de uma entreda do usuários, será feita uma busca no arquivo aluno2.txt          #
+#                                                                                                      #
+# Exemplo   : ./parametrosbuscaalunos.sh Ana                                                           #
+# Data      : 27/03/2024                                                                               #
+# Autor     : Rodolfo Ferraz                                                                           #
+# Alteracao : 28/06/2021                                                                               #
+########################################################################################################
+
+
+
+ARQALUNOS="/home/a4882yd/teste/Arquivos-Curso-ShellScript/CursoShellScript/arquivos/alunos2.txt"
+
+clear
+echo "===================Script de Busca de Alunos ==============="
+echo ""
+
+ALUNOCOMPLETO=$(grep "$1" $ARQALUNOS)
+
+
+
+
+echo ""
+
+echo "O nome completo do aluno é: $ALUNOCOMPLETO "
+
+echo ""
+
+echo "Fim do Script"
+
+
+
+
+
+=================================================================================
+
+
+
+
+
+#!/bin/bash
+########################################################################################################
+#criacao : Script de cópia e restart                                                                   #
+#                                                                                                      #
+# Exemplo   : ./copiarestart.sh hom02-payware                                                          #
+# Data      : 27/03/2024                                                                               #
+# Autor     : Rodolfo Ferraz                                                                           #
+# Alteracao : 28/06/2021                                                                               #
+########################################################################################################
+
+
+
+// exemplo: hom02-ws_payware, hom02-cmsbatch, hom02-cmsweb01, hom02-cmsweb02, hom02-cmsweb03
+                                                     
+
+clear
+echo "=================== Script de cópia e restart ==============="
+echo ""
+
+INSTANCIA=$1
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+sudo -u admweb /app/scripts/webctl $INSTANCIA stop
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/
+sudo -u admweb rm -r data ; sudo -u admweb rm -r tmp
+sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.failed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.dodeploy
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.deployed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.isdeploying
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.undeployed
+sudo -u admweb /app/scripts/webctl $INSTANCIA start
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/ 
+ls -l
+
+
+
+==============================================================================
+
+
+
+
+
+#!/bin/bash
+########################################################################################################
+#criacao : Script de cópia e restart                                                                   #
+#                                                                                                      #
+# Exemplo   : ./copiarestart.sh hom02-payware                                                          #
+# Data      : 27/03/2024                                                                               #
+# Autor     : Rodolfo Ferraz                                                                           #
+# Alteracao : 28/06/2021                                                                               #
+########################################################################################################
+
+
+
+# Exemplo: hom02-ws_payware, hom02-cmsbatch, hom02-cmsweb01, hom02-cmsweb02, hom02-cmsweb03
+
+
+clear
+echo ""
+echo "=================== Script de cópia e restart ==============="
+echo ""
+
+INSTANCIA=$1
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/;
+sudo -u admweb /app/scripts/webctl $INSTANCIA status;
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+
+~
+~
+~
+======================================================================
+
+
+
+
+echo ""
+clear
+echo "=================== Script de cópia e restart ==============="
+echo ""
+
+INSTANCIA=$1
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+ls -l | grep "failed"
+ls -ls | grep -c  "failed"
+
+
+==============================================================
+
+
+                                                                           
+#!/bin/bash
+##########################################################################################################
+#criacao : Script de Deploy Web                                                                          #
+#                                                                                                        #
+# Exemplo   : ./deploy.sh hom02-payware                                                                  #
+# Ambientes de exemplo: hom02-ws_payware, hom02-cmsbatch, hom02-cmsweb01, hom02-cmsweb02, hom02-cmsweb03 #
+#                                                                                                        #
+# Ambiente  : homologação                                                                                #
+# Autor     : Rodolfo Ferraz                                                                             #
+# Criação   : 28/03/2024                                                                                 #
+# Alteracao : 28/06/2021                                                                                 #
+##########################################################################################################
+
+
+echo ""
+clear
+echo "=================== Script de cópia e restart ==============="
+echo ""
+
+INSTANCIA=$1
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+ls -l | grep "failed"
+echo "Os números de 'faileds', ANTES de executar o script são:" ; ls -ls | grep -c  "failed"
+sudo -u admweb /app/scripts/webctl $INSTANCIA stop
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/
+sudo -u admweb rm -r data ; sudo -u admweb rm -r tmp
+sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.failed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.dodeploy
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.deployed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.isdeploying
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.undeployed
+sudo -u admweb /app/scripts/webctl $INSTANCIA start
+sudo -u admweb /app/scripts/webctl $INSTANCIA status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
+ls -l
+ls -l | grep "failed"
+echo "O numero de 'faileds' DEPOIS de executar o script são: " ; ls -ls | grep -c  "failed"
+                              
+	
+========================================================================
+
+
+#!/bin/bash
+##########################################################################################################
+#criacao : Script de Deploy Web                                                                          #                                                                       #
+#                                                                                                        #
+# Exemplo   : ./deploy.sh hom02-payware                                                                  #
+# Ambientes de exemplo: hom02-ws_payware, hom02-cmsbatch, hom02-cmsweb01, hom02-cmsweb02, hom02-cmsweb03 #
+#                                                                                                        #
+# Ambiente  : homologação                                                                                #
+# Autor     : Rodolfo Ferraz                                                                             #
+# Criação   : 28/03/2024                                                                                 #
+# Alteracao :                                                                                 #
+##########################################################################################################
+
+
+clear
+echo ""
+echo "=================== Script de Deploy Web 1 ==============="
+echo ""
+
+INSTANCIA1=$1
+INSTANCIA2=$2
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA1 status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/
+ls -l
+echo ""
+echo "Os números de 'faileds', ANTES de executar o script são:" ; ls -ls | grep -c  "failed"
+echo ""
+ls -l | grep "failed"
+echo ""
+sudo -u admweb /app/scripts/webctl $INSTANCIA1 stop
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/
+sudo -u admweb rm -r data ; sudo -u admweb rm -r tmp
+sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/*.failed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/*.dodeploy
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/*.deployed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/*.isdeploying
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/*.undeployed
+sudo -u admweb /app/scripts/webctl $INSTANCIA1 start
+sudo -u admweb /app/scripts/webctl $INSTANCIA1 status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA1/deployments/
+ls -l
+echo ""
+echo "O numero de 'faileds' DEPOIS de executar o script são: " ; ls -ls | grep -c  "failed"
+echo ""
+ls -l | grep "failed"
+
+
+
+
+echo ""
+echo ""
+echo ""
+echo "=================== Script de Deploy Web 2 ==============="
+echo ""
+
+
+
+sudo -u admweb /app/scripts/webctl $INSTANCIA2 status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/
+ls -l
+echo ""
+echo "Os números de 'faileds', ANTES de executar o script são:" ; ls -ls | grep -c  "failed"
+echo ""
+ls -l | grep "failed"
+echo ""
+sudo -u admweb /app/scripts/webctl $INSTANCIA2 stop
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/
+sudo -u admweb rm -r data ; sudo -u admweb rm -r tmp
+sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/*.failed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/*.dodeploy
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/*.deployed
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/*.isdeploying
+sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/*.undeployed
+sudo -u admweb /app/scripts/webctl $INSTANCIA2 start
+sudo -u admweb /app/scripts/webctl $INSTANCIA2 status
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA2/deployments/
+ls -l
+echo ""
+echo "O numero de 'faileds' DEPOIS de executar o script são: " ; ls -ls | grep -c  "failed"
+echo ""
+ls -l | grep "failed"
