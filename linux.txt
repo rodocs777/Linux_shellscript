@@ -978,3 +978,34 @@ echo ""
 echo "O numero de 'faileds' DEPOIS de executar o script são: " ; ls -ls | grep -c  "failed"
 echo ""
 ls -l | grep "failed"
+
+
+________________________________
+
+
+
+
+[a4882yd@brsmcbcuvlhjb01 ~]$ for i in {0..20..2}; do echo "Vallor $i"; done
+Vallor 0
+Vallor 2
+Vallor 4
+Vallor 6
+Vallor 8
+Vallor 10
+Vallor 12
+Vallor 14
+Vallor 16
+Vallor 18
+Vallor 20
+
+
+
+[a4882yd@brsmcbcuvlhjb01 ~]$ for hom in homo*; do echo "O arquivo atual é $hom"; done
+O arquivo atual é homologa
+O arquivo atual é homologa.sh
+[a4882yd@brsmcbcuvlhjb01 ~]$
+
+
+
+for hom in homo*; do echo "O arquivo atual é $hom"; done
+para apelido de homo*
