@@ -1,0 +1,193 @@
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom02-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom02-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom02-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom02-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom02-cmsbatch/deployments 
+ls 
+
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom03-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom03-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom03-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom03-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom03-cmsbatch/deployments 
+ls 
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom04-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom04-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom04-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom04-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom04-cmsbatch/deployments 
+ls 
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom05-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom05-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom05-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom05-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom05-cmsbatch/deployments 
+ls 
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom06-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom06-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom06-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom06-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom06-cmsbatch/deployments 
+ls 
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom07-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom07-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom07-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom07-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom07-cmsbatch/deployments 
+ls 
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom08-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom08-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom08-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom08-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom08-cmsbatch/deployments 
+ls 
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom09-ws_payware/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom09-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom09-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom09-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom09-cmsbatch/deployments 
+ls 
+
+
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom10-ws_payware/deployments 
+ls  
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom10-cmsweb01/deployments 
+ls 
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom10-cmsweb02/deployments 
+ls 
+
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom10-cmsweb03/deployments 
+ls 
+
+
+cd /app/jboss/paywareweb-ws/jboss-eap-7.0/hom10-cmsbatch/deployments 
+ls 
+

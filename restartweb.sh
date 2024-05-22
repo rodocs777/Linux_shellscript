@@ -1,35 +1,33 @@
 #!/bin/bash
 ##########################################################################################################
-# Criacao : Script de Deploy Web                                                                          #
+# Criacao : Script de Restart Web                                                                        #
 #                                                                                                        #
-# Exemplo   : ./deployweb.sh hom02-payware hom02-cmsbatch hom02-cmsweb01                                 #
+# Exemplo   : ./restartweb.sh hom02-payware hom02-cmsbatch hom02-cmsweb01                                #
 # Ambientes de exemplo: hom02-ws_payware, hom02-cmsbatch, hom02-cmsweb01, hom02-cmsweb02, hom02-cmsweb03 #
 #                                                                                                        #
 # Ambiente  : homologação                                                                                #
 # Autor     : Rodolfo F. Mariucci                                                                        #
-# Criação   : 28/03/2024                                                                                 #
+# Criação   : 22/05/2024                                                                                 #
 # Alteracao : 20/05/2024                                                                                 #
 ##########################################################################################################
 
 #==========> Variaveis de Ambiente <==========#
 
-nomeshell="deployweb"
+nomeshell="restartweb"
 DataHora=$(date "+%Y%m%d%H%M%S")
 caminhoShell=$(pwd)
 caminhoLog=$caminhoShell/Logs/
 arquivoLog="${caminhoLog}${nomeshell}.${DataHora}.log"
-cd /home/a4882yd/homologa/
-chmod 777 *
 
 INSTANCIAS=("$@")
 
 #==========> Funcoes <==========#
 
-deploy_instance() {
+restart_instance() {
   local INSTANCIA=$1
 
   echo "" 															>>$arquivoLog
-  echo "=================== Script de Deploy Web - $INSTANCIA ===============" >>$arquivoLog
+  echo "=================== Script de Restart Web - $INSTANCIA ===============" >>$arquivoLog
   echo ""															>>$arquivoLog
 
   echo "Os PIDs:"  >>$arquivoLog
@@ -50,12 +48,6 @@ deploy_instance() {
   cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/
   sudo -u admweb rm -r data
   sudo -u admweb rm -r tmp
-  sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.failed
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.dodeploy
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.deployed
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.isdeploying
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.undeployed
   sudo -u admweb /app/scripts/webctl $INSTANCIA start
   sudo -u admweb /app/scripts/webctl $INSTANCIA status >>$arquivoLog
   cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
@@ -76,6 +68,6 @@ deploy_instance() {
 
 for INSTANCIA in "${INSTANCIAS[@]}"; do
   if [ -n "$INSTANCIA" ]; then
-    deploy_instance "$INSTANCIA"
+    restart_instance "$INSTANCIA"
   fi
 done

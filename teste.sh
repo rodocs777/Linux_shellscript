@@ -46,17 +46,6 @@ deploy_instance() {
   ls -l | grep "failed"  >>$arquivoLog
   echo "" >>$arquivoLog
   echo "" >>$arquivoLog
-  sudo -u admweb /app/scripts/webctl $INSTANCIA stop  >>$arquivoLog
-  cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/
-  sudo -u admweb rm -r data
-  sudo -u admweb rm -r tmp
-  sudo -u admweb cp -prf /home/a4882yd/homologa/CMS-* /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.failed
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.dodeploy
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.deployed
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.isdeploying
-  sudo -u admweb rm /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/*.undeployed
-  sudo -u admweb /app/scripts/webctl $INSTANCIA start
   sudo -u admweb /app/scripts/webctl $INSTANCIA status >>$arquivoLog
   cd /app/jboss/paywareweb-ws/jboss-eap-7.0/$INSTANCIA/deployments/
   sleep 3
